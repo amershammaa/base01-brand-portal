@@ -136,67 +136,98 @@ const IconLab = () => (
 );
 
 /* --- 30 MASTER ARCHIVE (BREVITY VERSION) --- */
-const LogoShowcase = () => (
-    <div className="max-w-7xl mx-auto p-4 md:p-12 space-y-16">
-        <div className="text-center space-y-4 max-w-2xl mx-auto">
-            <h2 className="text-4xl font-display italic text-[#2D2424]">Archive Gallery</h2>
-            <p className="text-gray-500 text-sm">30 variations curated during the design process. Kerning is strictly tight. No Bold/Italic options preserved in variations 26-30.</p>
-        </div>
+const initialLogos = [
+    // Red Text Variations (New)
+    { id: 't-red-1', title: "V4. Heritage Red Mono", theme: "Condensed / Full Red", content: <h3 className="text-7xl font-condensed font-bold kerning-locked uppercase text-[#EC0E19]">base01</h3> },
+    { id: 't-red-2', title: "V4. Red Interlock", theme: "Overlapping / Red & Cocoa", content: <div className="flex items-center -space-x-4"><h3 className="text-8xl font-condensed font-bold text-[#EC0E19] opacity-90">base</h3><h3 className="text-8xl font-condensed font-bold text-[#2D2424]">01</h3></div> },
+    { id: 't-red-3', title: "V4. Red Geometric", theme: "Interlocking / Red 01", content: <div className="flex items-center -space-x-6"><h3 className="text-8xl font-main font-black kerning-ultra uppercase text-[#2D2424]">BASE</h3><h3 className="text-8xl font-main font-black kerning-ultra uppercase text-[#EC0E19]">01</h3></div> },
+    { id: 't-red-4', title: "V4. Absolute Red", theme: "Sentence / Full Heritage", content: <h3 className="text-7xl font-main font-normal kerning-ultra text-[#EC0E19]">Base01</h3> },
+    { id: 't-red-5', title: "V4. Red Sculpted", theme: "Regular Condensed / Red & Pink", content: <h3 className="text-8xl font-condensed font-normal kerning-locked uppercase text-[#EC0E19]">BASE<span className="text-[#F2C1C3]">01</span></h3> },
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {/* New Red Heritage Collection (V3) */}
-            <LogoBox title="V3. All Red" theme="Solid Heritage Red"><img src="/base01-whitebg-all-red.png" alt="All Red" className="max-w-full h-auto max-h-32 object-contain" /></LogoBox>
-            <LogoBox title="V3. Red & Black" theme="Red Base / Cocoa 01"><img src="/base01-whitebg-red-black.png" alt="Red & Black" className="max-w-full h-auto max-h-32 object-contain" /></LogoBox>
-            <LogoBox title="V3. Black & Red" theme="Cocoa Base / Red 01"><img src="/base01-whitebg-black-red.png" alt="Black & Red" className="max-w-full h-auto max-h-32 object-contain" /></LogoBox>
-            <LogoBox title="V3. Red & Pink" theme="Red Base / Rose 01"><img src="/base01-whitebg-red-pink.png" alt="Red & Pink" className="max-w-full h-auto max-h-32 object-contain" /></LogoBox>
-            <LogoBox title="V3. Pink & Red" theme="Rose Base / Red 01"><img src="/base01-whitebg-pink-red.png" alt="Pink & Red" className="max-w-full h-auto max-h-32 object-contain" /></LogoBox>
-            <LogoBox title="V3. Red & Bone" theme="Red Base / Bone 01"><img src="/base01-whitebg-red-bone.png" alt="Red & Bone" className="max-w-full h-auto max-h-32 object-contain" /></LogoBox>
-            <LogoBox title="V3. Bone & Red" theme="Bone Base / Red 01"><img src="/base01-whitebg-bone-red.png" alt="Bone & Red" className="max-w-full h-auto max-h-32 object-contain" /></LogoBox>
-            <LogoBox title="V3. Red & Gray" theme="Red Base / Slate 01"><img src="/base01-whitebg-red-gray.png" alt="Red & Gray" className="max-w-full h-auto max-h-32 object-contain" /></LogoBox>
-            <LogoBox title="V3. Gray & Red" theme="Slate Base / Red 01"><img src="/base01-whitebg-gray-red.png" alt="Gray & Red" className="max-w-full h-auto max-h-32 object-contain" /></LogoBox>
-            <LogoBox title="V3. Red & Dark Red" theme="Red Base / Crimson 01"><img src="/base01-whitebg-red-darkred.png" alt="Red & Dark Red" className="max-w-full h-auto max-h-32 object-contain" /></LogoBox>
+    // V3
+    { id: 'v3-1', title: "V3. All Red", theme: "Solid Heritage Red", content: <img src="/base01-whitebg-all-red.png" alt="All Red" className="max-w-full h-auto max-h-32 object-contain" /> },
+    { id: 'v3-2', title: "V3. Red & Black", theme: "Red Base / Cocoa 01", content: <img src="/base01-whitebg-red-black.png" alt="Red & Black" className="max-w-full h-auto max-h-32 object-contain" /> },
+    { id: 'v3-3', title: "V3. Black & Red", theme: "Cocoa Base / Red 01", content: <img src="/base01-whitebg-black-red.png" alt="Black & Red" className="max-w-full h-auto max-h-32 object-contain" /> },
+    { id: 'v3-4', title: "V3. Red & Pink", theme: "Red Base / Rose 01", content: <img src="/base01-whitebg-red-pink.png" alt="Red & Pink" className="max-w-full h-auto max-h-32 object-contain" /> },
+    { id: 'v3-5', title: "V3. Pink & Red", theme: "Rose Base / Red 01", content: <img src="/base01-whitebg-pink-red.png" alt="Pink & Red" className="max-w-full h-auto max-h-32 object-contain" /> },
+    { id: 'v3-6', title: "V3. Red & Bone", theme: "Red Base / Bone 01", content: <img src="/base01-whitebg-red-bone.png" alt="Red & Bone" className="max-w-full h-auto max-h-32 object-contain" /> },
+    { id: 'v3-7', title: "V3. Bone & Red", theme: "Bone Base / Red 01", content: <img src="/base01-whitebg-bone-red.png" alt="Bone & Red" className="max-w-full h-auto max-h-32 object-contain" /> },
+    { id: 'v3-8', title: "V3. Red & Gray", theme: "Red Base / Slate 01", content: <img src="/base01-whitebg-red-gray.png" alt="Red & Gray" className="max-w-full h-auto max-h-32 object-contain" /> },
+    { id: 'v3-9', title: "V3. Gray & Red", theme: "Slate Base / Red 01", content: <img src="/base01-whitebg-gray-red.png" alt="Gray & Red" className="max-w-full h-auto max-h-32 object-contain" /> },
+    { id: 'v3-10', title: "V3. Red & Dark Red", theme: "Red Base / Crimson 01", content: <img src="/base01-whitebg-red-darkred.png" alt="Red & Dark Red" className="max-w-full h-auto max-h-32 object-contain" /> },
 
+    // V2
+    { id: 'v2-1', title: "V2. Original Red", theme: "Solid Image / Uploaded", content: <img src="/base01-logo2-original.png" alt="Original Logo V2" className="max-w-full h-auto max-h-32 object-contain" /> },
+    { id: 'v2-2', title: "V2. All Black", theme: "Obsidian Cocoa", content: <img src="/base01-logo2-black.png" alt="Black Logo V2" className="max-w-full h-auto max-h-32 object-contain" /> },
+    { id: 'v2-3', title: "V2. All Pink", theme: "Luminous Rose", content: <img src="/base01-logo2-pink.png" alt="Pink Logo V2" className="max-w-full h-auto max-h-32 object-contain" /> },
+    { id: 'v2-4', title: "V2. Black & Pink", theme: "Dual Tone", content: <img src="/base01-logo2-black-pink.png" alt="Black and Pink Logo V2" className="max-w-full h-auto max-h-32 object-contain" /> },
+    { id: 'v2-5', title: "V2. All Bone", theme: "Antique Bone", content: <div className="bg-[#2D2424] p-6 rounded-2xl w-full flex justify-center"><img src="/base01-logo2-bone.png" alt="Bone Logo V2" className="max-w-full h-auto max-h-24 object-contain" /></div> },
 
-            {/* New Image Based Logos (V2) */}
-            <LogoBox title="V2. Original Red" theme="Solid Image / Uploaded"><img src="/base01-logo2-original.png" alt="Original Logo V2" className="max-w-full h-auto max-h-32 object-contain" /></LogoBox>
-            <LogoBox title="V2. All Black" theme="Obsidian Cocoa"><img src="/base01-logo2-black.png" alt="Black Logo V2" className="max-w-full h-auto max-h-32 object-contain" /></LogoBox>
-            <LogoBox title="V2. All Pink" theme="Luminous Rose"><img src="/base01-logo2-pink.png" alt="Pink Logo V2" className="max-w-full h-auto max-h-32 object-contain" /></LogoBox>
-            <LogoBox title="V2. Black & Pink" theme="Dual Tone"><img src="/base01-logo2-black-pink.png" alt="Black and Pink Logo V2" className="max-w-full h-auto max-h-32 object-contain" /></LogoBox>
-            <LogoBox title="V2. All Bone" theme="Antique Bone"><div className="bg-[#2D2424] p-6 rounded-2xl w-full flex justify-center"><img src="/base01-logo2-bone.png" alt="Bone Logo V2" className="max-w-full h-auto max-h-24 object-contain" /></div></LogoBox>
+    // V1
+    { id: 'v1-1', title: "V1. Original Red", theme: "Solid Image / Uploaded", content: <img src="/base01-logo-original.png" alt="Original Logo" className="max-w-full h-auto max-h-32 object-contain" /> },
+    { id: 'v1-2', title: "V1. All Black", theme: "Obsidian Cocoa", content: <img src="/base01-logo-black.png" alt="Black Logo" className="max-w-full h-auto max-h-32 object-contain" /> },
+    { id: 'v1-3', title: "V1. All Pink", theme: "Luminous Rose", content: <img src="/base01-logo-pink.png" alt="Pink Logo" className="max-w-full h-auto max-h-32 object-contain" /> },
+    { id: 'v1-4', title: "V1. Black & Pink", theme: "Dual Tone", content: <img src="/base01-logo-black-pink.png" alt="Black and Pink Logo" className="max-w-full h-auto max-h-32 object-contain" /> },
+    { id: 'v1-5', title: "V1. All Bone", theme: "Antique Bone", content: <div className="bg-[#2D2424] p-6 rounded-2xl w-full flex justify-center"><img src="/base01-logo-bone.png" alt="Bone Logo" className="max-w-full h-auto max-h-24 object-contain" /></div> },
 
-            {/* New Image Based Logos (V1) */}
-            <LogoBox title="V1. Original Red" theme="Solid Image / Uploaded"><img src="/base01-logo-original.png" alt="Original Logo" className="max-w-full h-auto max-h-32 object-contain" /></LogoBox>
-            <LogoBox title="V1. All Black" theme="Obsidian Cocoa"><img src="/base01-logo-black.png" alt="Black Logo" className="max-w-full h-auto max-h-32 object-contain" /></LogoBox>
-            <LogoBox title="V1. All Pink" theme="Luminous Rose"><img src="/base01-logo-pink.png" alt="Pink Logo" className="max-w-full h-auto max-h-32 object-contain" /></LogoBox>
-            <LogoBox title="V1. Black & Pink" theme="Dual Tone"><img src="/base01-logo-black-pink.png" alt="Black and Pink Logo" className="max-w-full h-auto max-h-32 object-contain" /></LogoBox>
-            <LogoBox title="V1. All Bone" theme="Antique Bone"><div className="bg-[#2D2424] p-6 rounded-2xl w-full flex justify-center"><img src="/base01-logo-bone.png" alt="Bone Logo" className="max-w-full h-auto max-h-24 object-contain" /></div></LogoBox>
+    // Repeating the archive logic for full history
+    { id: 'arch-1', title: "01. Tall Mono", theme: "Condensed / Mono", content: <h3 className="text-7xl font-condensed font-bold kerning-locked uppercase text-[#2D2424]">base01</h3> },
+    { id: 'arch-2', title: "02. Tall Pink", theme: "Condensed / Pink 01", content: <h3 className="text-7xl font-condensed font-bold kerning-locked uppercase text-[#2D2424]">base<span className="text-[#F2C1C3]">01</span></h3> },
+    { id: 'arch-17', title: "17. Interlock Pink", theme: "Overlapping / Pink 01", content: <div className="flex items-center -space-x-4"><h3 className="text-8xl font-condensed font-bold text-[#2D2424] opacity-90">base</h3><h3 className="text-8xl font-condensed font-bold text-[#F2C1C3]">01</h3></div> },
+    { id: 'arch-24', title: "24. Geometric Lock", theme: "Interlocking / Pink 01", content: <div className="flex items-center -space-x-6"><h3 className="text-8xl font-main font-black kerning-ultra uppercase text-[#2D2424]">BASE</h3><h3 className="text-8xl font-main font-black kerning-ultra uppercase text-[#F2C1C3]">01</h3></div> },
+    { id: 'arch-25', title: "25. Absolute Regular", theme: "Sentence / Pink 01", content: <h3 className="text-7xl font-main font-normal kerning-ultra text-[#2D2424]">Base<span className="text-[#F2C1C3]">01</span></h3> },
+    { id: 'arch-28', title: "28. Serene Serif", theme: "Light Serif / Pink 01", content: <h3 className="text-7xl font-display font-light kerning-locked text-[#2D2424]">Base<span className="text-[#F2C1C3]">01</span></h3> },
+    { id: 'arch-29', title: "29. Ultra Fine", theme: "Thin Sans / Pink 01", content: <h3 className="text-6xl font-main font-thin kerning-ultra uppercase text-[#2D2424]">BASE<span className="text-[#F2C1C3] font-normal">01</span></h3> },
+    { id: 'arch-30', title: "30. Sculpted Mono", theme: "Regular Condensed / Pink 01", content: <h3 className="text-8xl font-condensed font-normal kerning-locked uppercase text-[#2D2424]">BASE<span className="text-[#F2C1C3]">01</span></h3> }
+];
 
-            {/* Repeating the archive logic for full history */}
-            <LogoBox title="01. Tall Mono" theme="Condensed / Mono"><h3 className="text-7xl font-condensed font-bold kerning-locked uppercase text-[#2D2424]">base01</h3></LogoBox>
-            <LogoBox title="02. Tall Pink" theme="Condensed / Pink 01"><h3 className="text-7xl font-condensed font-bold kerning-locked uppercase text-[#2D2424]">base<span className="text-[#F2C1C3]">01</span></h3></LogoBox>
-            <LogoBox title="17. Interlock Pink" theme="Overlapping / Pink 01"><div className="flex items-center -space-x-4"><h3 className="text-8xl font-condensed font-bold text-[#2D2424] opacity-90">base</h3><h3 className="text-8xl font-condensed font-bold text-[#F2C1C3]">01</h3></div></LogoBox>
-            <LogoBox title="24. Geometric Lock" theme="Interlocking / Pink 01"><div className="flex items-center -space-x-6"><h3 className="text-8xl font-main font-black kerning-ultra uppercase text-[#2D2424]">BASE</h3><h3 className="text-8xl font-main font-black kerning-ultra uppercase text-[#F2C1C3]">01</h3></div></LogoBox>
-            <LogoBox title="25. Absolute Regular" theme="Sentence / Pink 01"><h3 className="text-7xl font-main font-normal kerning-ultra text-[#2D2424]">Base<span className="text-[#F2C1C3]">01</span></h3></LogoBox>
-            <LogoBox title="28. Serene Serif" theme="Light Serif / Pink 01"><h3 className="text-7xl font-display font-light kerning-locked text-[#2D2424]">Base<span className="text-[#F2C1C3]">01</span></h3></LogoBox>
-            <LogoBox title="29. Ultra Fine" theme="Thin Sans / Pink 01"><h3 className="text-6xl font-main font-thin kerning-ultra uppercase text-[#2D2424]">BASE<span className="text-[#F2C1C3] font-normal">01</span></h3></LogoBox>
-            <LogoBox title="30. Sculpted Mono" theme="Regular Condensed / Pink 01"><h3 className="text-8xl font-condensed font-normal kerning-locked uppercase text-[#2D2424]">BASE<span className="text-[#F2C1C3]">01</span></h3></LogoBox>
-            {/* Simplified for view, actual build would contain all 30 */}
-            <div className="flex items-center justify-center border-2 border-dashed border-pink-100 rounded-[3rem] p-12 opacity-50">
-                <p className="text-[10px] font-bold uppercase tracking-[0.4em] text-gray-300">Archive Items 03-23 Cached</p>
+const LogoShowcase = () => {
+    const [logos, setLogos] = useState(initialLogos);
+
+    const removeLogo = (id) => {
+        setLogos(logos.filter(logo => logo.id !== id));
+    };
+
+    return (
+        <div className="max-w-7xl mx-auto p-4 md:p-12 space-y-16">
+            <div className="text-center space-y-4 max-w-2xl mx-auto">
+                <h2 className="text-4xl font-display italic text-[#2D2424]">Archive Gallery</h2>
+                <p className="text-gray-500 text-sm">Now with an editable list. Hover over a logo and click the '×' to delete variations that you don't want to keep.</p>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                {logos.map(logo => (
+                    <LogoBox key={logo.id} title={logo.title} theme={logo.theme} onDelete={() => removeLogo(logo.id)}>
+                        {logo.content}
+                    </LogoBox>
+                ))}
+
+                <div className="flex items-center justify-center border-2 border-dashed border-pink-100 rounded-[3rem] p-12 opacity-50">
+                    <p className="text-[10px] font-bold uppercase tracking-[0.4em] text-gray-300">Archive Items 03-23 Cached</p>
+                </div>
             </div>
         </div>
-    </div>
-);
+    );
+};
 
-const LogoBox = ({ title, theme, children }) => (
+const LogoBox = ({ title, theme, children, onDelete }) => (
     <div className="bg-white p-12 rounded-[2.5rem] border border-pink-50 shadow-sm hover:shadow-xl transition-all duration-700 flex flex-col items-center justify-center min-h-[300px] group relative overflow-hidden text-center">
+        {onDelete && (
+            <button
+                onClick={onDelete}
+                className="absolute top-6 right-8 text-gray-200 hover:text-red-500 transition-colors z-10 text-xl font-bold font-sans cursor-pointer focus:outline-none opacity-0 group-hover:opacity-100"
+                title="Delete Variation"
+            >
+                ×
+            </button>
+        )}
         <div className="absolute top-6 left-8 flex flex-col items-start text-left">
             <span className="text-[9px] font-bold uppercase tracking-widest text-[#F2C1C3]">{theme}</span>
             <span className="text-[7px] font-bold uppercase tracking-widest text-gray-300 mt-0.5">{title}</span>
         </div>
         <div className="w-full transform transition-transform duration-500 group-hover:scale-105">{children}</div>
         <div className="absolute bottom-6 opacity-0 group-hover:opacity-100 transition-opacity">
-            <button className="text-[9px] font-bold text-[#F2C1C3] uppercase tracking-widest border-b border-[#F2C1C3] pb-1">Select This Version</button>
+            <button className="text-[9px] font-bold text-[#F2C1C3] uppercase tracking-widest border-b border-[#F2C1C3] pb-1 cursor-pointer">Select This Version</button>
         </div>
     </div>
 );
