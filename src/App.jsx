@@ -144,6 +144,19 @@ const LogoShowcase = () => (
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {/* New Red Heritage Collection (V3) */}
+            <LogoBox title="V3. All Red" theme="Solid Heritage Red"><img src="/base01-whitebg-all-red.png" alt="All Red" className="max-w-full h-auto max-h-32 object-contain" /></LogoBox>
+            <LogoBox title="V3. Red & Black" theme="Red Base / Cocoa 01"><img src="/base01-whitebg-red-black.png" alt="Red & Black" className="max-w-full h-auto max-h-32 object-contain" /></LogoBox>
+            <LogoBox title="V3. Black & Red" theme="Cocoa Base / Red 01"><img src="/base01-whitebg-black-red.png" alt="Black & Red" className="max-w-full h-auto max-h-32 object-contain" /></LogoBox>
+            <LogoBox title="V3. Red & Pink" theme="Red Base / Rose 01"><img src="/base01-whitebg-red-pink.png" alt="Red & Pink" className="max-w-full h-auto max-h-32 object-contain" /></LogoBox>
+            <LogoBox title="V3. Pink & Red" theme="Rose Base / Red 01"><img src="/base01-whitebg-pink-red.png" alt="Pink & Red" className="max-w-full h-auto max-h-32 object-contain" /></LogoBox>
+            <LogoBox title="V3. Red & Bone" theme="Red Base / Bone 01"><img src="/base01-whitebg-red-bone.png" alt="Red & Bone" className="max-w-full h-auto max-h-32 object-contain" /></LogoBox>
+            <LogoBox title="V3. Bone & Red" theme="Bone Base / Red 01"><img src="/base01-whitebg-bone-red.png" alt="Bone & Red" className="max-w-full h-auto max-h-32 object-contain" /></LogoBox>
+            <LogoBox title="V3. Red & Gray" theme="Red Base / Slate 01"><img src="/base01-whitebg-red-gray.png" alt="Red & Gray" className="max-w-full h-auto max-h-32 object-contain" /></LogoBox>
+            <LogoBox title="V3. Gray & Red" theme="Slate Base / Red 01"><img src="/base01-whitebg-gray-red.png" alt="Gray & Red" className="max-w-full h-auto max-h-32 object-contain" /></LogoBox>
+            <LogoBox title="V3. Red & Dark Red" theme="Red Base / Crimson 01"><img src="/base01-whitebg-red-darkred.png" alt="Red & Dark Red" className="max-w-full h-auto max-h-32 object-contain" /></LogoBox>
+
+
             {/* New Image Based Logos (V2) */}
             <LogoBox title="V2. Original Red" theme="Solid Image / Uploaded"><img src="/base01-logo2-original.png" alt="Original Logo V2" className="max-w-full h-auto max-h-32 object-contain" /></LogoBox>
             <LogoBox title="V2. All Black" theme="Obsidian Cocoa"><img src="/base01-logo2-black.png" alt="Black Logo V2" className="max-w-full h-auto max-h-32 object-contain" /></LogoBox>
