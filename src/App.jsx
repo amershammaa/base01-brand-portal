@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Sun, Battery, Shield, ArrowRight, Instagram, Facebook, Twitter, Sparkles, Layout, Palette, Box, Heart, Zap, Award, Eye, Layers, Lightbulb, Camera, RefreshCw, Check, MousePointer2 } from 'lucide-react';
 
 const BrandPortal = () => {
-    const [activeTab, setActiveTab] = useState('icons');
+    const [activeTab, setActiveTab] = useState('logos');
     const [siteBg, setSiteBg] = useState('#FFF9F9'); // Default to Luminous Silk
 
     const renderContent = () => {
@@ -83,129 +83,57 @@ const BrandPortal = () => {
     );
 };
 
-/* --- ICON LAB: THE BEST OUTPUTS --- */
-const IconLab = () => {
-    const [generating, setGenerating] = useState(false);
-    const [genStep, setGenStep] = useState(0);
-
-    const masterIcons = [
-        {
-            id: 'the-interlock',
-            title: 'B01 Image Inspired',
-            desc: 'High-contrast serif with direct B-0 overlap. Pure luxury.',
-            svg: (
-                <svg width="120" height="120" viewBox="0 0 100 100" fill="none">
-                    <text x="5" y="75" className="font-display" fontSize="85" fontWeight="400" fill="#2D2424">B</text>
-                    <text x="35" y="75" className="font-display" fontSize="85" fontWeight="400" fill="#F2C1C3" style={{ opacity: 0.9 }}>0</text>
-                    <text x="78" y="75" className="font-display" fontSize="60" fontWeight="300" fill="#F2C1C3">1</text>
-                </svg>
-            )
-        },
-        {
-            id: 'pop-condensed',
-            title: 'POP Fashion Style',
-            desc: 'Tall, bold, condensed interlock. Maximum vertical impact.',
-            svg: (
-                <svg width="120" height="120" viewBox="0 0 100 100" fill="none">
-                    <text x="10" y="80" className="font-condensed" fontSize="95" fontWeight="700" fill="#2D2424" style={{ letterSpacing: '-0.15em' }}>b</text>
-                    <text x="40" y="80" className="font-condensed" fontSize="95" fontWeight="700" fill="#F2C1C3" style={{ letterSpacing: '-0.1em' }}>01</text>
-                </svg>
-            )
-        },
-        {
-            id: 'the-monogram',
-            title: 'The b01 Capsule',
-            desc: 'Minimalist mark where the 01 completes the B.',
-            svg: (
-                <svg width="100" height="100" viewBox="0 0 100 100" fill="none">
-                    <path d="M20 20 V80 H50 C70 80 80 70 80 50 C80 30 70 20 50 20 H20" stroke="#2D2424" strokeWidth="14" fill="none" />
-                    <circle cx="58" cy="50" r="15" stroke="#F2C1C3" strokeWidth="6" fill="none" />
-                    <text x="58" y="55" textAnchor="middle" className="font-main" fontSize="10" fontWeight="800" fill="#F2C1C3">01</text>
-                </svg>
-            )
-        },
-        {
-            id: 'vertical-chic',
-            title: 'Tall Editorial',
-            desc: 'High-fashion stack. 01 is emphasized in pink.',
-            svg: (
-                <svg width="100" height="100" viewBox="0 0 100 100" fill="none">
-                    <text x="50%" y="45" textAnchor="middle" className="font-display font-light" fontSize="50" fill="#2D2424">b</text>
-                    <text x="50%" y="90" textAnchor="middle" className="font-condensed font-bold" fontSize="60" fill="#F2C1C3">01</text>
-                    <rect x="40" y="50" width="20" height="1" fill="#F2C1C3" />
-                </svg>
-            )
-        }
-    ];
-
-    const triggerGen = () => {
-        setGenerating(true);
-        setGenStep(1);
-        setTimeout(() => setGenStep(2), 1500);
-        setTimeout(() => {
-            setGenerating(false);
-            setGenStep(0);
-        }, 3000);
-    };
-
-    return (
-        <div className="max-w-7xl mx-auto p-8 md:p-12 space-y-20">
-            {/* GEMINI NANO BANANA GENERATION UI */}
-            <div className="bg-[#2D2424] rounded-[4rem] p-12 text-white relative overflow-hidden shadow-2xl">
-                <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-[#F2C1C3] opacity-10 blur-[120px]"></div>
-
-                <div className="relative z-10 flex flex-col items-center text-center space-y-8">
-                    <div className="inline-flex items-center gap-3 bg-white/10 px-6 py-2 rounded-full border border-white/20">
-                        <Sparkles size={16} className="text-[#F2C1C3]" />
-                        <span className="text-[10px] font-bold uppercase tracking-[0.4em]">Gemini Nano Banana Pro v3.5</span>
-                    </div>
-
-                    <h3 className="text-5xl font-display italic max-w-2xl">Generate New Iconic Variations</h3>
-                    <p className="text-gray-400 max-w-lg font-light leading-relaxed">
-                        Input: "B01 Interlocking", "POP Fashion Condensed", "Only 01 in Pink".
-                    </p>
-
-                    <div className="w-full max-w-md bg-white/5 border border-white/10 p-2 rounded-full flex items-center justify-between pl-6 group hover:border-[#F2C1C3]/50 transition-colors">
-                        <span className="text-xs text-gray-500">System Prompt: interlock_b01_condensed_luxury</span>
-                        <button
-                            onClick={triggerGen}
-                            disabled={generating}
-                            className="bg-[#F2C1C3] text-[#2D2424] px-8 py-3 rounded-full text-[10px] font-black uppercase tracking-widest flex items-center gap-2 hover:scale-105 active:scale-95 transition-all shadow-xl shadow-[#F2C1C3]/20"
-                        >
-                            {generating ? <RefreshCw className="animate-spin" size={14} /> : <MousePointer2 size={14} />}
-                            {generating ? 'Processing Geometry...' : 'Generate with Gemini'}
-                        </button>
-                    </div>
-
-                    {generating && (
-                        <div className="flex gap-4 items-center">
-                            <div className={`h-1 w-12 rounded-full transition-all duration-700 ${genStep >= 1 ? 'bg-[#F2C1C3]' : 'bg-white/10'}`}></div>
-                            <div className={`h-1 w-12 rounded-full transition-all duration-700 ${genStep >= 2 ? 'bg-[#F2C1C3]' : 'bg-white/10'}`}></div>
-                            <span className="text-[10px] font-mono text-[#F2C1C3] animate-pulse uppercase tracking-widest">
-                                {genStep === 1 ? 'Analyzing B-0 Curvature' : 'Applying Pink Touch to 01'}
-                            </span>
-                        </div>
-                    )}
-                </div>
-            </div>
-
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
-                {masterIcons.map((icon, idx) => (
-                    <div key={icon.id} className="bg-white p-12 rounded-[3rem] border border-pink-50 shadow-sm hover:shadow-2xl transition-all duration-700 flex flex-col items-center group relative overflow-hidden">
-                        <div className="absolute top-6 left-8 flex flex-col">
-                            <span className="text-[8px] font-bold text-[#F2C1C3] uppercase tracking-widest">Nano Pro Output {idx + 1}</span>
-                        </div>
-                        <div className="h-48 w-full flex items-center justify-center transform group-hover:scale-110 transition-transform duration-500">
-                            {icon.svg}
-                        </div>
-                        <h4 className="mt-4 font-bold text-[10px] uppercase tracking-widest text-[#2D2424]">{icon.title}</h4>
-                        <p className="text-[10px] text-gray-400 mt-2 max-w-[200px] text-center italic">{icon.desc}</p>
-                    </div>
-                ))}
-            </div>
+/* --- B01 ICON LAB --- */
+const IconLab = () => (
+    <div className="max-w-7xl mx-auto p-4 md:p-12 space-y-16">
+        <div className="text-center space-y-4 max-w-2xl mx-auto">
+            <h2 className="text-4xl font-display italic text-[#2D2424]">B01 Icons</h2>
+            <p className="text-gray-500 text-sm">Pristine vector typography for the B01 standalone mark. No compression, infinite scaling.</p>
         </div>
-    );
-};
+
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
+            {/* Iteration 1 */}
+            <LogoBox title="01. The Signature Lock" theme="Playfair Serif / Overlap">
+                <div className="flex items-baseline justify-center h-64">
+                    <span className="font-display text-[180px] leading-none text-[#2D2424]">B</span>
+                    <span className="font-display text-[140px] leading-none text-[#F2C1C3] italic -ml-8 tracking-tighter">01</span>
+                </div>
+            </LogoBox>
+
+            {/* Iteration 2 */}
+            <LogoBox title="02. The Editorial Stack" theme="Oswald Condensed / Vertical">
+                <div className="flex flex-col items-center justify-center h-64 -space-y-4 mt-8">
+                    <span className="font-condensed text-[160px] leading-[0.7] text-[#2D2424] font-bold">B</span>
+                    <span className="font-condensed text-[160px] leading-[0.7] text-[#F2C1C3] font-bold">01</span>
+                </div>
+            </LogoBox>
+
+            {/* Iteration 3 */}
+            <LogoBox title="03. The Modernist" theme="Inter Black / Max Kerning">
+                <div className="flex items-center justify-center h-64">
+                    <span className="font-main text-[160px] leading-none text-[#2D2424] font-black tracking-tighter">B</span>
+                    <span className="font-main text-[160px] leading-none text-[#F2C1C3] font-black tracking-tighter">01</span>
+                </div>
+            </LogoBox>
+
+            {/* Iteration 4 */}
+            <LogoBox title="04. The Classic Minimal" theme="Tenor Sans / Spaced">
+                <div className="flex items-center justify-center h-64">
+                    <span className="font-title text-[150px] leading-none text-[#2D2424]">B</span>
+                    <span className="font-title text-[150px] leading-none text-[#F2C1C3] ml-2">01</span>
+                </div>
+            </LogoBox>
+
+            {/* Iteration 5 */}
+            <LogoBox title="05. The Negative Space" theme="Playfair / Obsidian Background">
+                <div className="bg-[#2D2424] rounded-[2rem] w-full flex items-baseline justify-center h-64 shadow-2xl">
+                    <span className="font-display text-[180px] leading-none text-[#FAFAF8]">B</span>
+                    <span className="font-display text-[140px] leading-none text-[#F2C1C3] italic -ml-8 tracking-tighter">01</span>
+                </div>
+            </LogoBox>
+        </div>
+    </div>
+);
 
 /* --- 30 MASTER ARCHIVE (BREVITY VERSION) --- */
 const LogoShowcase = () => (
