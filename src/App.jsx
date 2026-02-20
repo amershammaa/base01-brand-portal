@@ -64,8 +64,8 @@ const BrandPortal = () => {
                                 key={tab.id}
                                 onClick={() => setActiveTab(tab.id)}
                                 className={`flex items-center gap-2 px-5 py-2.5 rounded-full text-[10px] font-bold transition-all whitespace-nowrap uppercase tracking-widest ${activeTab === tab.id
-                                        ? 'bg-[#F2C1C3] text-white shadow-lg shadow-pink-200'
-                                        : 'text-gray-400 hover:text-[#F2C1C3]'
+                                    ? 'bg-[#F2C1C3] text-white shadow-lg shadow-pink-200'
+                                    : 'text-gray-400 hover:text-[#F2C1C3]'
                                     }`}
                             >
                                 <tab.icon size={14} />
@@ -216,6 +216,20 @@ const LogoShowcase = () => (
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {/* New Image Based Logos (V2) */}
+            <LogoBox title="V2. Original Red" theme="Solid Image / Uploaded"><img src="/base01-logo2-original.png" alt="Original Logo V2" className="max-w-full h-auto max-h-32 object-contain" /></LogoBox>
+            <LogoBox title="V2. All Black" theme="Obsidian Cocoa"><img src="/base01-logo2-black.png" alt="Black Logo V2" className="max-w-full h-auto max-h-32 object-contain" /></LogoBox>
+            <LogoBox title="V2. All Pink" theme="Luminous Rose"><img src="/base01-logo2-pink.png" alt="Pink Logo V2" className="max-w-full h-auto max-h-32 object-contain" /></LogoBox>
+            <LogoBox title="V2. Black & Pink" theme="Dual Tone"><img src="/base01-logo2-black-pink.png" alt="Black and Pink Logo V2" className="max-w-full h-auto max-h-32 object-contain" /></LogoBox>
+            <LogoBox title="V2. All Bone" theme="Antique Bone"><div className="bg-[#2D2424] p-6 rounded-2xl w-full flex justify-center"><img src="/base01-logo2-bone.png" alt="Bone Logo V2" className="max-w-full h-auto max-h-24 object-contain" /></div></LogoBox>
+
+            {/* New Image Based Logos (V1) */}
+            <LogoBox title="V1. Original Red" theme="Solid Image / Uploaded"><img src="/base01-logo-original.png" alt="Original Logo" className="max-w-full h-auto max-h-32 object-contain" /></LogoBox>
+            <LogoBox title="V1. All Black" theme="Obsidian Cocoa"><img src="/base01-logo-black.png" alt="Black Logo" className="max-w-full h-auto max-h-32 object-contain" /></LogoBox>
+            <LogoBox title="V1. All Pink" theme="Luminous Rose"><img src="/base01-logo-pink.png" alt="Pink Logo" className="max-w-full h-auto max-h-32 object-contain" /></LogoBox>
+            <LogoBox title="V1. Black & Pink" theme="Dual Tone"><img src="/base01-logo-black-pink.png" alt="Black and Pink Logo" className="max-w-full h-auto max-h-32 object-contain" /></LogoBox>
+            <LogoBox title="V1. All Bone" theme="Antique Bone"><div className="bg-[#2D2424] p-6 rounded-2xl w-full flex justify-center"><img src="/base01-logo-bone.png" alt="Bone Logo" className="max-w-full h-auto max-h-24 object-contain" /></div></LogoBox>
+
             {/* Repeating the archive logic for full history */}
             <LogoBox title="01. Tall Mono" theme="Condensed / Mono"><h3 className="text-7xl font-condensed font-bold kerning-locked uppercase text-[#2D2424]">base01</h3></LogoBox>
             <LogoBox title="02. Tall Pink" theme="Condensed / Pink 01"><h3 className="text-7xl font-condensed font-bold kerning-locked uppercase text-[#2D2424]">base<span className="text-[#F2C1C3]">01</span></h3></LogoBox>
