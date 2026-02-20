@@ -1,0 +1,374 @@
+import React, { useState, useEffect } from 'react';
+import { Sun, Battery, Shield, ArrowRight, Instagram, Facebook, Twitter, Sparkles, Layout, Palette, Box, Heart, Zap, Award, Eye, Layers, Lightbulb, Camera, RefreshCw, Check, MousePointer2 } from 'lucide-react';
+
+const BrandPortal = () => {
+    const [activeTab, setActiveTab] = useState('icons');
+    const [siteBg, setSiteBg] = useState('#FFF9F9'); // Default to Luminous Silk
+
+    const renderContent = () => {
+        switch (activeTab) {
+            case 'icons':
+                return <IconLab />;
+            case 'logos':
+                return <LogoShowcase />;
+            case 'palette':
+                return <PaletteGuide currentBg={siteBg} setBg={setSiteBg} />;
+            case 'web':
+                return <WebsiteMockup bg={siteBg} />;
+            case 'nano':
+                return <NanoBananaGuide />;
+            default:
+                return <IconLab />;
+        }
+    };
+
+    return (
+        <div className="min-h-screen bg-[#FFFBFB] font-sans text-[#2D2424] flex flex-col text-sm md:text-base transition-colors duration-500">
+            <style>
+                {`
+          @import url('https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;600;800&family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Tenor+Sans&family=Oswald:300;400;500;700&display=swap');
+          
+          .font-title { font-family: 'Tenor Sans', sans-serif; }
+          .font-display { font-family: 'Playfair Display', serif; }
+          .font-main { font-family: 'Inter', sans-serif; }
+          .font-condensed { font-family: 'Oswald', sans-serif; }
+          
+          .glow-pink {
+            box-shadow: 0 0 20px rgba(235, 183, 185, 0.4);
+          }
+          .kerning-locked {
+            letter-spacing: -0.08em;
+          }
+          .kerning-ultra {
+            letter-spacing: -0.12em;
+          }
+        `}
+            </style>
+
+            {/* Portal Navigation */}
+            <nav className="bg-white/80 backdrop-blur-md border-b border-pink-100 p-4 sticky top-0 z-50">
+                <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-4">
+                    <div className="flex items-center gap-3">
+                        <div className="w-8 h-8 bg-[#F2C1C3] rounded-full glow-pink"></div>
+                        <span className="text-2xl font-title tracking-tighter uppercase">base01</span>
+                    </div>
+                    <div className="flex space-x-1 md:space-x-4 overflow-x-auto pb-2 md:pb-0">
+                        {[
+                            { id: 'icons', label: 'Icon Lab (Gemini Gen)', icon: Sparkles },
+                            { id: 'logos', label: 'Master Archive (30)', icon: Layout },
+                            { id: 'palette', label: 'Luminous Palette', icon: Palette },
+                            { id: 'web', label: 'Luxury Web', icon: Box },
+                            { id: 'nano', label: 'Nano Banana Pro', icon: Lightbulb }
+                        ].map((tab) => (
+                            <button
+                                key={tab.id}
+                                onClick={() => setActiveTab(tab.id)}
+                                className={`flex items-center gap-2 px-5 py-2.5 rounded-full text-[10px] font-bold transition-all whitespace-nowrap uppercase tracking-widest ${activeTab === tab.id
+                                        ? 'bg-[#F2C1C3] text-white shadow-lg shadow-pink-200'
+                                        : 'text-gray-400 hover:text-[#F2C1C3]'
+                                    }`}
+                            >
+                                <tab.icon size={14} />
+                                {tab.label}
+                            </button>
+                        ))}
+                    </div>
+                </div>
+            </nav>
+
+            <main className="flex-grow">
+                {renderContent()}
+            </main>
+        </div>
+    );
+};
+
+/* --- ICON LAB: THE BEST OUTPUTS --- */
+const IconLab = () => {
+    const [generating, setGenerating] = useState(false);
+    const [genStep, setGenStep] = useState(0);
+
+    const masterIcons = [
+        {
+            id: 'the-interlock',
+            title: 'B01 Image Inspired',
+            desc: 'High-contrast serif with direct B-0 overlap. Pure luxury.',
+            svg: (
+                <svg width="120" height="120" viewBox="0 0 100 100" fill="none">
+                    <text x="5" y="75" className="font-display" fontSize="85" fontWeight="400" fill="#2D2424">B</text>
+                    <text x="35" y="75" className="font-display" fontSize="85" fontWeight="400" fill="#F2C1C3" style={{ opacity: 0.9 }}>0</text>
+                    <text x="78" y="75" className="font-display" fontSize="60" fontWeight="300" fill="#F2C1C3">1</text>
+                </svg>
+            )
+        },
+        {
+            id: 'pop-condensed',
+            title: 'POP Fashion Style',
+            desc: 'Tall, bold, condensed interlock. Maximum vertical impact.',
+            svg: (
+                <svg width="120" height="120" viewBox="0 0 100 100" fill="none">
+                    <text x="10" y="80" className="font-condensed" fontSize="95" fontWeight="700" fill="#2D2424" style={{ letterSpacing: '-0.15em' }}>b</text>
+                    <text x="40" y="80" className="font-condensed" fontSize="95" fontWeight="700" fill="#F2C1C3" style={{ letterSpacing: '-0.1em' }}>01</text>
+                </svg>
+            )
+        },
+        {
+            id: 'the-monogram',
+            title: 'The b01 Capsule',
+            desc: 'Minimalist mark where the 01 completes the B.',
+            svg: (
+                <svg width="100" height="100" viewBox="0 0 100 100" fill="none">
+                    <path d="M20 20 V80 H50 C70 80 80 70 80 50 C80 30 70 20 50 20 H20" stroke="#2D2424" strokeWidth="14" fill="none" />
+                    <circle cx="58" cy="50" r="15" stroke="#F2C1C3" strokeWidth="6" fill="none" />
+                    <text x="58" y="55" textAnchor="middle" className="font-main" fontSize="10" fontWeight="800" fill="#F2C1C3">01</text>
+                </svg>
+            )
+        },
+        {
+            id: 'vertical-chic',
+            title: 'Tall Editorial',
+            desc: 'High-fashion stack. 01 is emphasized in pink.',
+            svg: (
+                <svg width="100" height="100" viewBox="0 0 100 100" fill="none">
+                    <text x="50%" y="45" textAnchor="middle" className="font-display font-light" fontSize="50" fill="#2D2424">b</text>
+                    <text x="50%" y="90" textAnchor="middle" className="font-condensed font-bold" fontSize="60" fill="#F2C1C3">01</text>
+                    <rect x="40" y="50" width="20" height="1" fill="#F2C1C3" />
+                </svg>
+            )
+        }
+    ];
+
+    const triggerGen = () => {
+        setGenerating(true);
+        setGenStep(1);
+        setTimeout(() => setGenStep(2), 1500);
+        setTimeout(() => {
+            setGenerating(false);
+            setGenStep(0);
+        }, 3000);
+    };
+
+    return (
+        <div className="max-w-7xl mx-auto p-8 md:p-12 space-y-20">
+            {/* GEMINI NANO BANANA GENERATION UI */}
+            <div className="bg-[#2D2424] rounded-[4rem] p-12 text-white relative overflow-hidden shadow-2xl">
+                <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-[#F2C1C3] opacity-10 blur-[120px]"></div>
+
+                <div className="relative z-10 flex flex-col items-center text-center space-y-8">
+                    <div className="inline-flex items-center gap-3 bg-white/10 px-6 py-2 rounded-full border border-white/20">
+                        <Sparkles size={16} className="text-[#F2C1C3]" />
+                        <span className="text-[10px] font-bold uppercase tracking-[0.4em]">Gemini Nano Banana Pro v3.5</span>
+                    </div>
+
+                    <h3 className="text-5xl font-display italic max-w-2xl">Generate New Iconic Variations</h3>
+                    <p className="text-gray-400 max-w-lg font-light leading-relaxed">
+                        Input: "B01 Interlocking", "POP Fashion Condensed", "Only 01 in Pink".
+                    </p>
+
+                    <div className="w-full max-w-md bg-white/5 border border-white/10 p-2 rounded-full flex items-center justify-between pl-6 group hover:border-[#F2C1C3]/50 transition-colors">
+                        <span className="text-xs text-gray-500">System Prompt: interlock_b01_condensed_luxury</span>
+                        <button
+                            onClick={triggerGen}
+                            disabled={generating}
+                            className="bg-[#F2C1C3] text-[#2D2424] px-8 py-3 rounded-full text-[10px] font-black uppercase tracking-widest flex items-center gap-2 hover:scale-105 active:scale-95 transition-all shadow-xl shadow-[#F2C1C3]/20"
+                        >
+                            {generating ? <RefreshCw className="animate-spin" size={14} /> : <MousePointer2 size={14} />}
+                            {generating ? 'Processing Geometry...' : 'Generate with Gemini'}
+                        </button>
+                    </div>
+
+                    {generating && (
+                        <div className="flex gap-4 items-center">
+                            <div className={`h-1 w-12 rounded-full transition-all duration-700 ${genStep >= 1 ? 'bg-[#F2C1C3]' : 'bg-white/10'}`}></div>
+                            <div className={`h-1 w-12 rounded-full transition-all duration-700 ${genStep >= 2 ? 'bg-[#F2C1C3]' : 'bg-white/10'}`}></div>
+                            <span className="text-[10px] font-mono text-[#F2C1C3] animate-pulse uppercase tracking-widest">
+                                {genStep === 1 ? 'Analyzing B-0 Curvature' : 'Applying Pink Touch to 01'}
+                            </span>
+                        </div>
+                    )}
+                </div>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
+                {masterIcons.map((icon, idx) => (
+                    <div key={icon.id} className="bg-white p-12 rounded-[3rem] border border-pink-50 shadow-sm hover:shadow-2xl transition-all duration-700 flex flex-col items-center group relative overflow-hidden">
+                        <div className="absolute top-6 left-8 flex flex-col">
+                            <span className="text-[8px] font-bold text-[#F2C1C3] uppercase tracking-widest">Nano Pro Output {idx + 1}</span>
+                        </div>
+                        <div className="h-48 w-full flex items-center justify-center transform group-hover:scale-110 transition-transform duration-500">
+                            {icon.svg}
+                        </div>
+                        <h4 className="mt-4 font-bold text-[10px] uppercase tracking-widest text-[#2D2424]">{icon.title}</h4>
+                        <p className="text-[10px] text-gray-400 mt-2 max-w-[200px] text-center italic">{icon.desc}</p>
+                    </div>
+                ))}
+            </div>
+        </div>
+    );
+};
+
+/* --- 30 MASTER ARCHIVE (BREVITY VERSION) --- */
+const LogoShowcase = () => (
+    <div className="max-w-7xl mx-auto p-4 md:p-12 space-y-16">
+        <div className="text-center space-y-4 max-w-2xl mx-auto">
+            <h2 className="text-4xl font-display italic text-[#2D2424]">Archive Gallery</h2>
+            <p className="text-gray-500 text-sm">30 variations curated during the design process. Kerning is strictly tight. No Bold/Italic options preserved in variations 26-30.</p>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {/* Repeating the archive logic for full history */}
+            <LogoBox title="01. Tall Mono" theme="Condensed / Mono"><h3 className="text-7xl font-condensed font-bold kerning-locked uppercase text-[#2D2424]">base01</h3></LogoBox>
+            <LogoBox title="02. Tall Pink" theme="Condensed / Pink 01"><h3 className="text-7xl font-condensed font-bold kerning-locked uppercase text-[#2D2424]">base<span className="text-[#F2C1C3]">01</span></h3></LogoBox>
+            <LogoBox title="17. Interlock Pink" theme="Overlapping / Pink 01"><div className="flex items-center -space-x-4"><h3 className="text-8xl font-condensed font-bold text-[#2D2424] opacity-90">base</h3><h3 className="text-8xl font-condensed font-bold text-[#F2C1C3]">01</h3></div></LogoBox>
+            <LogoBox title="24. Geometric Lock" theme="Interlocking / Pink 01"><div className="flex items-center -space-x-6"><h3 className="text-8xl font-main font-black kerning-ultra uppercase text-[#2D2424]">BASE</h3><h3 className="text-8xl font-main font-black kerning-ultra uppercase text-[#F2C1C3]">01</h3></div></LogoBox>
+            <LogoBox title="25. Absolute Regular" theme="Sentence / Pink 01"><h3 className="text-7xl font-main font-normal kerning-ultra text-[#2D2424]">Base<span className="text-[#F2C1C3]">01</span></h3></LogoBox>
+            <LogoBox title="28. Serene Serif" theme="Light Serif / Pink 01"><h3 className="text-7xl font-display font-light kerning-locked text-[#2D2424]">Base<span className="text-[#F2C1C3]">01</span></h3></LogoBox>
+            <LogoBox title="29. Ultra Fine" theme="Thin Sans / Pink 01"><h3 className="text-6xl font-main font-thin kerning-ultra uppercase text-[#2D2424]">BASE<span className="text-[#F2C1C3] font-normal">01</span></h3></LogoBox>
+            <LogoBox title="30. Sculpted Mono" theme="Regular Condensed / Pink 01"><h3 className="text-8xl font-condensed font-normal kerning-locked uppercase text-[#2D2424]">BASE<span className="text-[#F2C1C3]">01</span></h3></LogoBox>
+            {/* Simplified for view, actual build would contain all 30 */}
+            <div className="flex items-center justify-center border-2 border-dashed border-pink-100 rounded-[3rem] p-12 opacity-50">
+                <p className="text-[10px] font-bold uppercase tracking-[0.4em] text-gray-300">Archive Items 03-23 Cached</p>
+            </div>
+        </div>
+    </div>
+);
+
+const LogoBox = ({ title, theme, children }) => (
+    <div className="bg-white p-12 rounded-[2.5rem] border border-pink-50 shadow-sm hover:shadow-xl transition-all duration-700 flex flex-col items-center justify-center min-h-[300px] group relative overflow-hidden text-center">
+        <div className="absolute top-6 left-8 flex flex-col items-start text-left">
+            <span className="text-[9px] font-bold uppercase tracking-widest text-[#F2C1C3]">{theme}</span>
+            <span className="text-[7px] font-bold uppercase tracking-widest text-gray-300 mt-0.5">{title}</span>
+        </div>
+        <div className="w-full transform transition-transform duration-500 group-hover:scale-105">{children}</div>
+        <div className="absolute bottom-6 opacity-0 group-hover:opacity-100 transition-opacity">
+            <button className="text-[9px] font-bold text-[#F2C1C3] uppercase tracking-widest border-b border-[#F2C1C3] pb-1">Select This Version</button>
+        </div>
+    </div>
+);
+
+/* --- COLOR & BACKGROUND STRATEGY --- */
+const PaletteGuide = ({ currentBg, setBg }) => (
+    <div className="max-w-5xl mx-auto p-12 space-y-24">
+        <section className="space-y-12">
+            <div className="text-center">
+                <h2 className="text-4xl font-display italic mb-4 text-[#2D2424]">Luminous Blush Palette</h2>
+                <p className="text-gray-500">The core colors for base01. Sophisticated, warm, and radiant.</p>
+            </div>
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
+                <ColorCard hex="#F2C1C3" name="Luminous Rose" role="Primary Glow" />
+                <ColorCard hex="#F9E8E8" name="Silk Blush" role="Highlight" />
+                <ColorCard hex="#2D2424" name="Obsidian Cocoa" role="Typography" />
+                <ColorCard hex="#FFF9F9" name="Ritual Base (ff9f9)" role="Saved Background" saved />
+            </div>
+        </section>
+
+        {/* BACKGROUND TOGGLE STRATEGY */}
+        <section className="space-y-12">
+            <div className="text-center">
+                <h2 className="text-3xl font-display italic mb-4">Website Background Strategy</h2>
+                <p className="text-gray-500">Choose the canvas for your online boutique. Your choice updates the Web Mockup tab.</p>
+            </div>
+            <div className="grid md:grid-cols-2 gap-8 max-w-2xl mx-auto">
+                <button
+                    onClick={() => setBg('#FAFAF8')}
+                    className={`p-10 rounded-[3rem] border-2 transition-all text-left relative overflow-hidden ${currentBg === '#FAFAF8' ? 'border-[#F2C1C3] scale-105 shadow-2xl' : 'border-pink-50 opacity-60'}`}
+                    style={{ backgroundColor: '#FAFAF8' }}
+                >
+                    <h4 className="font-title text-xl mb-2">Antique Bone</h4>
+                    <p className="text-[10px] leading-relaxed text-gray-500 font-medium">Classic, Chanel-style luxury. Professional and high-end.</p>
+                    {currentBg === '#FAFAF8' && <Check className="absolute top-4 right-6 text-[#F2C1C3]" size={24} />}
+                </button>
+
+                <button
+                    onClick={() => setBg('#FFF9F9')}
+                    className={`p-10 rounded-[3rem] border-2 transition-all text-left relative overflow-hidden ${currentBg === '#FFF9F9' ? 'border-[#F2C1C3] scale-105 shadow-2xl' : 'border-pink-50 opacity-60'}`}
+                    style={{ backgroundColor: '#FFF9F9' }}
+                >
+                    <h4 className="font-title text-xl mb-2">Luminous Silk</h4>
+                    <p className="text-[10px] leading-relaxed text-gray-500 font-medium italic">Your saved favorite (#FFF9F9). Ultra-premium soft glow effect.</p>
+                    {currentBg === '#FFF9F9' && <Check className="absolute top-4 right-6 text-[#F2C1C3]" size={24} />}
+                </button>
+            </div>
+        </section>
+    </div>
+);
+
+const ColorCard = ({ hex, name, role, saved }) => (
+    <div className="space-y-4 text-center">
+        <div className={`h-48 rounded-[3rem] shadow-xl border ${saved ? 'border-[#F2C1C3] ring-4 ring-[#F2C1C3]/10' : 'border-white'}`} style={{ backgroundColor: hex }}></div>
+        <div>
+            <p className="font-title text-xl text-[#2D2424]">{name}</p>
+            <p className="text-[10px] text-gray-400 uppercase tracking-widest mt-1">{hex}</p>
+            <p className={`text-[10px] font-bold uppercase tracking-widest mt-2 ${saved ? 'text-[#F2C1C3]' : 'text-gray-300'}`}>{role}</p>
+        </div>
+    </div>
+);
+
+/* --- WEBSITE MOCKUP (Using Dynamic Background) --- */
+const WebsiteMockup = ({ bg }) => (
+    <div className="min-h-screen text-[#2D2424] font-main transition-colors duration-1000" style={{ backgroundColor: bg }}>
+        <header className="px-10 py-8 flex justify-between items-center bg-white/40 backdrop-blur-xl sticky top-0 z-40 border-b border-pink-50">
+            <div className="flex items-center gap-3">
+                <div className="flex items-center -space-x-1">
+                    <span className="font-condensed text-3xl font-bold uppercase">base</span>
+                    <span className="font-condensed text-3xl font-bold uppercase text-[#F2C1C3]">01</span>
+                </div>
+            </div>
+            <nav className="hidden lg:flex space-x-16 text-[10px] font-bold uppercase tracking-widest text-gray-400">
+                <a href="#" className="hover:text-[#F2C1C3]">The Collection</a>
+                <a href="#" className="hover:text-[#F2C1C3]">The Science</a>
+                <a href="#" className="hover:text-[#F2C1C3]">About</a>
+            </nav>
+            <button className="text-[10px] font-bold uppercase bg-[#2D2424] text-white px-8 py-3 rounded-full">Cart (0)</button>
+        </header>
+
+        <section className="relative py-48 px-10 text-center">
+            <div className="max-w-5xl mx-auto space-y-12">
+                <div className="inline-flex items-center gap-3 bg-white px-5 py-2 rounded-full shadow-sm border border-pink-50">
+                    <Sparkles size={14} className="text-[#F2C1C3]" />
+                    <span className="text-[9px] font-bold uppercase tracking-[0.4em] text-[#F2C1C3]">Luminous Technology Defined</span>
+                </div>
+                <h1 className="text-8xl md:text-[12rem] font-condensed font-bold leading-[0.75] tracking-tighter uppercase text-[#2D2424]">
+                    Glow is the<br />
+                    <span className="text-[#F2C1C3]">Foundation.</span>
+                </h1>
+                <p className="text-xl text-gray-400 max-w-lg mx-auto font-light leading-relaxed">
+                    Clinical results. Fashion form. Discover the flexible mask designed for your ritual.
+                </p>
+                <div className="flex flex-col sm:flex-row gap-6 pt-12 justify-center">
+                    <button className="bg-[#2D2424] text-white px-16 py-6 rounded-full text-[10px] font-bold uppercase tracking-widest shadow-2xl hover:bg-[#F2C1C3] transition-all">
+                        Discover The Mask
+                    </button>
+                    <button className="flex items-center gap-4 text-[10px] font-bold uppercase tracking-widest border-b border-gray-200 pb-2">
+                        The Science <ArrowRight size={14} />
+                    </button>
+                </div>
+            </div>
+        </section>
+    </div>
+);
+
+const NanoBananaGuide = () => (
+    <div className="max-w-4xl mx-auto p-12 space-y-12">
+        <div className="bg-[#2D2424] rounded-[4rem] p-16 text-white relative shadow-2xl">
+            <div className="absolute top-0 right-0 w-96 h-96 bg-[#F2C1C3] opacity-20 blur-[100px]"></div>
+            <h2 className="text-4xl font-display italic tracking-widest text-[#F2C1C3]">Nano Banana Pro Guide</h2>
+            <p className="text-gray-400 tracking-widest uppercase text-xs font-bold mb-12">Visual Asset Engine</p>
+            <div className="space-y-12">
+                <PromptItem title="The Studio Master" prompt="Ultra-high-end studio photography of a flexible matte blush-pink face mask, inner LEDs glowing soft rose light, on rose quartz stone, 8k resolution." />
+                <PromptItem title="Atmospheric Morning" prompt="Cinematic medium shot of woman in minimalist bedroom, morning light, wearing blush-pink light therapy mask, editorial style." />
+            </div>
+        </div>
+    </div>
+);
+
+const PromptItem = ({ title, prompt }) => (
+    <div className="space-y-4">
+        <h4 className="text-[10px] font-bold uppercase tracking-[0.4em] text-[#F2C1C3]">{title}</h4>
+        <div className="bg-white/5 border border-white/10 p-8 rounded-[2rem] font-main text-lg leading-relaxed italic">
+            &ldquo;{prompt}&rdquo;
+        </div>
+    </div>
+);
+
+export default BrandPortal;
