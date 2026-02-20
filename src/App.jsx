@@ -144,37 +144,21 @@ const initialLogos = [
     { id: 't-mix-4', title: "V5. Condensed Regular", theme: "Condensed / Not Bold", content: <h3 className="text-8xl font-condensed font-normal kerning-locked uppercase text-[#2D2424]">BASE<span className="text-[#EC0E19]">01</span></h3> },
 
     // Red Text Variations (New)
-    { id: 't-red-1', title: "V4. Heritage Red Mono", theme: "Condensed / Full Red", content: <h3 className="text-7xl font-condensed font-bold kerning-locked uppercase text-[#EC0E19]">base01</h3> },
     { id: 't-red-2', title: "V4. Red Interlock", theme: "Overlapping / Red & Cocoa", content: <div className="flex items-center -space-x-4"><h3 className="text-8xl font-condensed font-bold text-[#EC0E19] opacity-90">base</h3><h3 className="text-8xl font-condensed font-bold text-[#2D2424]">01</h3></div> },
     { id: 't-red-3', title: "V4. Red Geometric", theme: "Interlocking / Red 01", content: <div className="flex items-center -space-x-6"><h3 className="text-8xl font-main font-black kerning-ultra uppercase text-[#2D2424]">BASE</h3><h3 className="text-8xl font-main font-black kerning-ultra uppercase text-[#EC0E19]">01</h3></div> },
-    { id: 't-red-4', title: "V4. Absolute Red", theme: "Sentence / Full Heritage", content: <h3 className="text-7xl font-main font-normal kerning-ultra text-[#EC0E19]">Base01</h3> },
-    { id: 't-red-5', title: "V4. Red Sculpted", theme: "Regular Condensed / Red & Pink", content: <h3 className="text-8xl font-condensed font-normal kerning-locked uppercase text-[#EC0E19]">BASE<span className="text-[#F2C1C3]">01</span></h3> },
 
     // V3
     { id: 'v3-1', title: "V3. All Red", theme: "Solid Heritage Red", content: <img src="/base01-whitebg-all-red.png" alt="All Red" className="max-w-full h-auto max-h-32 object-contain" /> },
     { id: 'v3-2', title: "V3. Red & Black", theme: "Red Base / Cocoa 01", content: <img src="/base01-whitebg-red-black.png" alt="Red & Black" className="max-w-full h-auto max-h-32 object-contain" /> },
     { id: 'v3-3', title: "V3. Black & Red", theme: "Cocoa Base / Red 01", content: <img src="/base01-whitebg-black-red.png" alt="Black & Red" className="max-w-full h-auto max-h-32 object-contain" /> },
-    { id: 'v3-4', title: "V3. Red & Pink", theme: "Red Base / Rose 01", content: <img src="/base01-whitebg-red-pink.png" alt="Red & Pink" className="max-w-full h-auto max-h-32 object-contain" /> },
-    { id: 'v3-5', title: "V3. Pink & Red", theme: "Rose Base / Red 01", content: <img src="/base01-whitebg-pink-red.png" alt="Pink & Red" className="max-w-full h-auto max-h-32 object-contain" /> },
-    { id: 'v3-6', title: "V3. Red & Bone", theme: "Red Base / Bone 01", content: <img src="/base01-whitebg-red-bone.png" alt="Red & Bone" className="max-w-full h-auto max-h-32 object-contain" /> },
-    { id: 'v3-7', title: "V3. Bone & Red", theme: "Bone Base / Red 01", content: <img src="/base01-whitebg-bone-red.png" alt="Bone & Red" className="max-w-full h-auto max-h-32 object-contain" /> },
-    { id: 'v3-8', title: "V3. Red & Gray", theme: "Red Base / Slate 01", content: <img src="/base01-whitebg-red-gray.png" alt="Red & Gray" className="max-w-full h-auto max-h-32 object-contain" /> },
-    { id: 'v3-9', title: "V3. Gray & Red", theme: "Slate Base / Red 01", content: <img src="/base01-whitebg-gray-red.png" alt="Gray & Red" className="max-w-full h-auto max-h-32 object-contain" /> },
-    { id: 'v3-10', title: "V3. Red & Dark Red", theme: "Red Base / Crimson 01", content: <img src="/base01-whitebg-red-darkred.png" alt="Red & Dark Red" className="max-w-full h-auto max-h-32 object-contain" /> },
 
     // V2
-    { id: 'v2-1', title: "V2. Original Red", theme: "Solid Image / Uploaded", content: <img src="/base01-logo2-original.png" alt="Original Logo V2" className="max-w-full h-auto max-h-32 object-contain" /> },
     { id: 'v2-2', title: "V2. All Black", theme: "Obsidian Cocoa", content: <img src="/base01-logo2-black.png" alt="Black Logo V2" className="max-w-full h-auto max-h-32 object-contain" /> },
     { id: 'v2-3', title: "V2. All Pink", theme: "Luminous Rose", content: <img src="/base01-logo2-pink.png" alt="Pink Logo V2" className="max-w-full h-auto max-h-32 object-contain" /> },
     { id: 'v2-4', title: "V2. Black & Pink", theme: "Dual Tone", content: <img src="/base01-logo2-black-pink.png" alt="Black and Pink Logo V2" className="max-w-full h-auto max-h-32 object-contain" /> },
-    { id: 'v2-5', title: "V2. All Bone", theme: "Antique Bone", content: <div className="bg-[#2D2424] p-6 rounded-2xl w-full flex justify-center"><img src="/base01-logo2-bone.png" alt="Bone Logo V2" className="max-w-full h-auto max-h-24 object-contain" /></div> },
 
     // V1
-    { id: 'v1-1', title: "V1. Original Red", theme: "Solid Image / Uploaded", content: <img src="/base01-logo-original.png" alt="Original Logo" className="max-w-full h-auto max-h-32 object-contain" /> },
-    { id: 'v1-2', title: "V1. All Black", theme: "Obsidian Cocoa", content: <img src="/base01-logo-black.png" alt="Black Logo" className="max-w-full h-auto max-h-32 object-contain" /> },
     { id: 'v1-3', title: "V1. All Pink", theme: "Luminous Rose", content: <img src="/base01-logo-pink.png" alt="Pink Logo" className="max-w-full h-auto max-h-32 object-contain" /> },
-    { id: 'v1-4', title: "V1. Black & Pink", theme: "Dual Tone", content: <img src="/base01-logo-black-pink.png" alt="Black and Pink Logo" className="max-w-full h-auto max-h-32 object-contain" /> },
-    { id: 'v1-5', title: "V1. All Bone", theme: "Antique Bone", content: <div className="bg-[#2D2424] p-6 rounded-2xl w-full flex justify-center"><img src="/base01-logo-bone.png" alt="Bone Logo" className="max-w-full h-auto max-h-24 object-contain" /></div> },
 
     // Repeating the archive logic for full history
     { id: 'arch-1', title: "01. Tall Mono", theme: "Condensed / Mono", content: <h3 className="text-7xl font-condensed font-bold kerning-locked uppercase text-[#2D2424]">base01</h3> },
