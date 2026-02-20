@@ -137,6 +137,12 @@ const IconLab = () => (
 
 /* --- 30 MASTER ARCHIVE (BREVITY VERSION) --- */
 const initialLogos = [
+    // V5 - Non-Bold, Base Black, 01 Red (New)
+    { id: 't-mix-1', title: "V5. Sans Regular", theme: "Main Font / Not Bold", content: <h3 className="text-7xl font-main font-normal kerning-ultra text-[#2D2424]">Base<span className="text-[#EC0E19]">01</span></h3> },
+    { id: 't-mix-2', title: "V5. Serif Light", theme: "Display Font / Not Bold", content: <h3 className="text-7xl font-display font-light kerning-locked text-[#2D2424]">Base<span className="text-[#EC0E19]">01</span></h3> },
+    { id: 't-mix-3', title: "V5. Title Minimal", theme: "Title Font / Not Bold", content: <h3 className="text-7xl font-title kerning-ultra text-[#2D2424]">BASE<span className="text-[#EC0E19]">01</span></h3> },
+    { id: 't-mix-4', title: "V5. Condensed Regular", theme: "Condensed / Not Bold", content: <h3 className="text-8xl font-condensed font-normal kerning-locked uppercase text-[#2D2424]">BASE<span className="text-[#EC0E19]">01</span></h3> },
+
     // Red Text Variations (New)
     { id: 't-red-1', title: "V4. Heritage Red Mono", theme: "Condensed / Full Red", content: <h3 className="text-7xl font-condensed font-bold kerning-locked uppercase text-[#EC0E19]">base01</h3> },
     { id: 't-red-2', title: "V4. Red Interlock", theme: "Overlapping / Red & Cocoa", content: <div className="flex items-center -space-x-4"><h3 className="text-8xl font-condensed font-bold text-[#EC0E19] opacity-90">base</h3><h3 className="text-8xl font-condensed font-bold text-[#2D2424]">01</h3></div> },
@@ -196,8 +202,8 @@ const LogoShowcase = () => {
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                {logos.map(logo => (
-                    <LogoBox key={logo.id} title={logo.title} theme={logo.theme} onDelete={() => removeLogo(logo.id)}>
+                {logos.map((logo, index) => (
+                    <LogoBox key={logo.id} title={`[${index + 1}] ${logo.title}`} theme={logo.theme} onDelete={() => removeLogo(logo.id)}>
                         {logo.content}
                     </LogoBox>
                 ))}
