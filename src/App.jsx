@@ -138,19 +138,20 @@ const IconLab = () => (
 
 /* --- 30 MASTER ARCHIVE (BREVITY VERSION) --- */
 const initialLogos = [
-    // V6 - Deep Luxury Red 10-Pack (New)
+    // V7 - Deep Red & Black Typography (New)
+    { id: 't-deep-1', title: "V7. Deep Title", theme: "Title Font / Deep Red", content: <h3 className="text-7xl font-title kerning-ultra text-[#2D2424]">BASE<span className="text-[#8B0000]">01</span></h3> },
+    { id: 't-deep-2', title: "V7. Deep Interlock", theme: "Overlapping / Deep Red", content: <div className="flex items-center -space-x-4"><h3 className="text-8xl font-condensed font-normal text-[#2D2424] opacity-90">base</h3><h3 className="text-8xl font-condensed font-normal text-[#8B0000]">01</h3></div> },
+    { id: 't-deep-3', title: "V7. Deep Serif", theme: "Display Font / Deep Red", content: <h3 className="text-7xl font-display font-normal kerning-locked text-[#2D2424]">Base<span className="text-[#8B0000]">01</span></h3> },
+    { id: 't-deep-4', title: "V7. Deep Condensed", theme: "Condensed / Deep Red", content: <h3 className="text-8xl font-condensed font-normal kerning-locked uppercase text-[#2D2424]">BASE<span className="text-[#8B0000]">01</span></h3> },
+    { id: 't-deep-5', title: "V7. Deep Sans", theme: "Main Font / Deep Red", content: <h3 className="text-7xl font-main font-normal kerning-ultra text-[#2D2424]">base<span className="text-[#8B0000] font-light">01</span></h3> },
+    { id: 't-deep-6', title: "V7. Deep Geometric", theme: "Interlocking / Deep Red", content: <div className="flex items-center -space-x-6"><h3 className="text-8xl font-main font-black kerning-ultra uppercase text-[#2D2424]">BASE</h3><h3 className="text-8xl font-main font-black kerning-ultra uppercase text-[#8B0000]">01</h3></div> },
+
+    // V6 - Deep Luxury Red Curated
     { id: 'v6-1', title: "V6. All Deep Red", theme: "Solid Luxury Red", content: <img src="/base01-darkred-all-darkred.png" alt="All Deep Red" className="max-w-full h-auto max-h-32 object-contain" /> },
-    { id: 'v6-2', title: "V6. Deep Red & Black", theme: "Deep Red Base / Cocoa 01", content: <img src="/base01-darkred-darkred-black.png" alt="Deep Red & Black" className="max-w-full h-auto max-h-32 object-contain" /> },
     { id: 'v6-3', title: "V6. Black & Deep Red", theme: "Cocoa Base / Deep Red 01", content: <img src="/base01-darkred-black-darkred.png" alt="Black & Deep Red" className="max-w-full h-auto max-h-32 object-contain" /> },
-    { id: 'v6-4', title: "V6. Deep Red & Pink", theme: "Deep Red Base / Rose 01", content: <img src="/base01-darkred-darkred-pink.png" alt="Deep Red & Pink" className="max-w-full h-auto max-h-32 object-contain" /> },
-    { id: 'v6-5', title: "V6. Pink & Deep Red", theme: "Rose Base / Deep Red 01", content: <img src="/base01-darkred-pink-darkred.png" alt="Pink & Deep Red" className="max-w-full h-auto max-h-32 object-contain" /> },
-    { id: 'v6-6', title: "V6. Deep Red & Bone", theme: "Deep Red Base / Bone 01", content: <img src="/base01-darkred-darkred-bone.png" alt="Deep Red & Bone" className="max-w-full h-auto max-h-32 object-contain" /> },
-    { id: 'v6-7', title: "V6. Bone & Deep Red", theme: "Bone Base / Deep Red 01", content: <img src="/base01-darkred-bone-darkred.png" alt="Bone & Deep Red" className="max-w-full h-auto max-h-32 object-contain" /> },
-    { id: 'v6-8', title: "V6. Deep Red & Gray", theme: "Deep Red Base / Slate 01", content: <img src="/base01-darkred-darkred-gray.png" alt="Deep Red & Gray" className="max-w-full h-auto max-h-32 object-contain" /> },
-    { id: 'v6-9', title: "V6. Gray & Deep Red", theme: "Slate Base / Deep Red 01", content: <img src="/base01-darkred-gray-darkred.png" alt="Gray & Deep Red" className="max-w-full h-auto max-h-32 object-contain" /> },
     { id: 'v6-10', title: "V6. Deep Red & White", theme: "Deep Red Base / White 01", content: <div className="bg-[#FAFAF8] p-4 rounded-xl flex justify-center"><img src="/base01-darkred-darkred-white.png" alt="Deep Red & White" className="max-w-full h-auto max-h-32 object-contain" /></div> },
 
-    // V5 - Non-Bold, Base Black, 01 Red (New)
+    // V5 - Non-Bold, Base Black, 01 Red
     { id: 't-mix-1', title: "V5. Sans Regular", theme: "Main Font / Not Bold", content: <h3 className="text-7xl font-main font-normal kerning-ultra text-[#2D2424]">Base<span className="text-[#EC0E19]">01</span></h3> },
     { id: 't-mix-2', title: "V5. Serif Light", theme: "Display Font / Not Bold", content: <h3 className="text-7xl font-display font-light kerning-locked text-[#2D2424]">Base<span className="text-[#EC0E19]">01</span></h3> },
     { id: 't-mix-3', title: "V5. Title Minimal", theme: "Title Font / Not Bold", content: <h3 className="text-7xl font-title kerning-ultra text-[#2D2424]">BASE<span className="text-[#EC0E19]">01</span></h3> },
