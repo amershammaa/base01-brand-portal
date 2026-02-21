@@ -3,7 +3,8 @@ import { Sun, Battery, Shield, ArrowRight, Instagram, Facebook, Twitter, Sparkle
 
 const BrandPortal = () => {
     const [activeTab, setActiveTab] = useState('logos');
-    const [siteBg, setSiteBg] = useState('#FFF9F9'); // Default to Luminous Silk
+    const [siteBg, setSiteBg] = useState('#FAFAF8'); // Default to Antique Bone
+    const [accentColor, setAccentColor] = useState('#F2C1C3'); // Default to Luminous Rose
 
     const renderContent = () => {
         switch (activeTab) {
@@ -14,7 +15,7 @@ const BrandPortal = () => {
             case 'palette':
                 return <PaletteGuide currentBg={siteBg} setBg={setSiteBg} />;
             case 'web':
-                return <WebsiteMockup bg={siteBg} />;
+                return <WebsiteMockup bg={siteBg} accent={accentColor} setAccent={setAccentColor} />;
             case 'nano':
                 return <NanoBananaGuide />;
             default:
@@ -137,6 +138,18 @@ const IconLab = () => (
 
 /* --- 30 MASTER ARCHIVE (BREVITY VERSION) --- */
 const initialLogos = [
+    // V6 - Deep Luxury Red 10-Pack (New)
+    { id: 'v6-1', title: "V6. All Deep Red", theme: "Solid Luxury Red", content: <img src="/base01-darkred-all-darkred.png" alt="All Deep Red" className="max-w-full h-auto max-h-32 object-contain" /> },
+    { id: 'v6-2', title: "V6. Deep Red & Black", theme: "Deep Red Base / Cocoa 01", content: <img src="/base01-darkred-darkred-black.png" alt="Deep Red & Black" className="max-w-full h-auto max-h-32 object-contain" /> },
+    { id: 'v6-3', title: "V6. Black & Deep Red", theme: "Cocoa Base / Deep Red 01", content: <img src="/base01-darkred-black-darkred.png" alt="Black & Deep Red" className="max-w-full h-auto max-h-32 object-contain" /> },
+    { id: 'v6-4', title: "V6. Deep Red & Pink", theme: "Deep Red Base / Rose 01", content: <img src="/base01-darkred-darkred-pink.png" alt="Deep Red & Pink" className="max-w-full h-auto max-h-32 object-contain" /> },
+    { id: 'v6-5', title: "V6. Pink & Deep Red", theme: "Rose Base / Deep Red 01", content: <img src="/base01-darkred-pink-darkred.png" alt="Pink & Deep Red" className="max-w-full h-auto max-h-32 object-contain" /> },
+    { id: 'v6-6', title: "V6. Deep Red & Bone", theme: "Deep Red Base / Bone 01", content: <img src="/base01-darkred-darkred-bone.png" alt="Deep Red & Bone" className="max-w-full h-auto max-h-32 object-contain" /> },
+    { id: 'v6-7', title: "V6. Bone & Deep Red", theme: "Bone Base / Deep Red 01", content: <img src="/base01-darkred-bone-darkred.png" alt="Bone & Deep Red" className="max-w-full h-auto max-h-32 object-contain" /> },
+    { id: 'v6-8', title: "V6. Deep Red & Gray", theme: "Deep Red Base / Slate 01", content: <img src="/base01-darkred-darkred-gray.png" alt="Deep Red & Gray" className="max-w-full h-auto max-h-32 object-contain" /> },
+    { id: 'v6-9', title: "V6. Gray & Deep Red", theme: "Slate Base / Deep Red 01", content: <img src="/base01-darkred-gray-darkred.png" alt="Gray & Deep Red" className="max-w-full h-auto max-h-32 object-contain" /> },
+    { id: 'v6-10', title: "V6. Deep Red & White", theme: "Deep Red Base / White 01", content: <div className="bg-[#FAFAF8] p-4 rounded-xl flex justify-center"><img src="/base01-darkred-darkred-white.png" alt="Deep Red & White" className="max-w-full h-auto max-h-32 object-contain" /></div> },
+
     // V5 - Non-Bold, Base Black, 01 Red (New)
     { id: 't-mix-1', title: "V5. Sans Regular", theme: "Main Font / Not Bold", content: <h3 className="text-7xl font-main font-normal kerning-ultra text-[#2D2424]">Base<span className="text-[#EC0E19]">01</span></h3> },
     { id: 't-mix-2', title: "V5. Serif Light", theme: "Display Font / Not Bold", content: <h3 className="text-7xl font-display font-light kerning-locked text-[#2D2424]">Base<span className="text-[#EC0E19]">01</span></h3> },
@@ -230,11 +243,12 @@ const PaletteGuide = ({ currentBg, setBg }) => (
                 <h2 className="text-4xl font-display italic mb-4 text-[#2D2424]">Luminous Blush Palette</h2>
                 <p className="text-gray-500">The core colors for base01. Sophisticated, warm, and radiant.</p>
             </div>
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
+            <div className="grid grid-cols-2 md:grid-cols-5 gap-8">
+                <ColorCard hex="#8B0000" name="Heritage Crimson" role="Deep Luxury Accent" />
                 <ColorCard hex="#F2C1C3" name="Luminous Rose" role="Primary Glow" />
                 <ColorCard hex="#F9E8E8" name="Silk Blush" role="Highlight" />
                 <ColorCard hex="#2D2424" name="Obsidian Cocoa" role="Typography" />
-                <ColorCard hex="#FFF9F9" name="Ritual Base (ff9f9)" role="Saved Background" saved />
+                <ColorCard hex="#FFF9F9" name="Ritual Base" role="Saved Background" saved />
             </div>
         </section>
 
@@ -280,42 +294,61 @@ const ColorCard = ({ hex, name, role, saved }) => (
     </div>
 );
 
-/* --- WEBSITE MOCKUP (Using Dynamic Background) --- */
-const WebsiteMockup = ({ bg }) => (
-    <div className="min-h-screen text-[#2D2424] font-main transition-colors duration-1000" style={{ backgroundColor: bg }}>
-        <header className="px-10 py-8 flex justify-between items-center bg-white/40 backdrop-blur-xl sticky top-0 z-40 border-b border-pink-50">
+/* --- WEBSITE MOCKUP (Using Dynamic Background & Accent) --- */
+const WebsiteMockup = ({ bg, accent, setAccent }) => (
+    <div className="min-h-screen text-[#2D2424] font-main transition-colors duration-1000 relative" style={{ backgroundColor: bg }}>
+
+        {/* Toggle UI */}
+        <div className="flex justify-center pt-8 pb-4 absolute top-0 w-full z-50">
+            <div className="bg-white/80 backdrop-blur-md rounded-full p-2 flex gap-2 shadow-xl border border-gray-100">
+                <button
+                    onClick={() => setAccent('#F2C1C3')}
+                    className={`px-6 py-2 rounded-full text-[10px] font-bold uppercase tracking-widest transition-all ${accent === '#F2C1C3' ? 'text-white shadow-xl' : 'text-gray-400 hover:text-black'}`}
+                    style={{ backgroundColor: accent === '#F2C1C3' ? '#F2C1C3' : 'transparent' }}>
+                    Luminous Rose Accent
+                </button>
+                <button
+                    onClick={() => setAccent('#8B0000')}
+                    className={`px-6 py-2 rounded-full text-[10px] font-bold uppercase tracking-widest transition-all ${accent === '#8B0000' ? 'text-white shadow-xl' : 'text-gray-400 hover:text-black'}`}
+                    style={{ backgroundColor: accent === '#8B0000' ? '#8B0000' : 'transparent' }}>
+                    Deep Crimson Accent
+                </button>
+            </div>
+        </div>
+
+        <header className="px-10 py-8 flex justify-between items-center bg-white/40 backdrop-blur-xl sticky top-0 z-40 border-b transition-colors duration-500 pt-24" style={{ borderColor: accent }}>
             <div className="flex items-center gap-3">
                 <div className="flex items-center -space-x-1">
                     <span className="font-condensed text-3xl font-bold uppercase">base</span>
-                    <span className="font-condensed text-3xl font-bold uppercase text-[#F2C1C3]">01</span>
+                    <span className="font-condensed text-3xl font-bold uppercase transition-colors duration-500" style={{ color: accent }}>01</span>
                 </div>
             </div>
             <nav className="hidden lg:flex space-x-16 text-[10px] font-bold uppercase tracking-widest text-gray-400">
-                <a href="#" className="hover:text-[#F2C1C3]">The Collection</a>
-                <a href="#" className="hover:text-[#F2C1C3]">The Science</a>
-                <a href="#" className="hover:text-[#F2C1C3]">About</a>
+                <a href="#" className="transition-colors duration-500" onMouseEnter={(e) => e.target.style.color = accent} onMouseLeave={(e) => e.target.style.color = '#9ca3af'}>The Collection</a>
+                <a href="#" className="transition-colors duration-500" onMouseEnter={(e) => e.target.style.color = accent} onMouseLeave={(e) => e.target.style.color = '#9ca3af'}>The Science</a>
+                <a href="#" className="transition-colors duration-500" onMouseEnter={(e) => e.target.style.color = accent} onMouseLeave={(e) => e.target.style.color = '#9ca3af'}>About</a>
             </nav>
             <button className="text-[10px] font-bold uppercase bg-[#2D2424] text-white px-8 py-3 rounded-full">Cart (0)</button>
         </header>
 
         <section className="relative py-48 px-10 text-center">
             <div className="max-w-5xl mx-auto space-y-12">
-                <div className="inline-flex items-center gap-3 bg-white px-5 py-2 rounded-full shadow-sm border border-pink-50">
-                    <Sparkles size={14} className="text-[#F2C1C3]" />
-                    <span className="text-[9px] font-bold uppercase tracking-[0.4em] text-[#F2C1C3]">Luminous Technology Defined</span>
+                <div className="inline-flex items-center gap-3 bg-white px-5 py-2 rounded-full shadow-sm border transition-colors duration-500" style={{ borderColor: accent }}>
+                    <Sparkles size={14} style={{ color: accent }} />
+                    <span className="text-[9px] font-bold uppercase tracking-[0.4em] transition-colors duration-500" style={{ color: accent }}>Luminous Technology Defined</span>
                 </div>
                 <h1 className="text-8xl md:text-[12rem] font-condensed font-bold leading-[0.75] tracking-tighter uppercase text-[#2D2424]">
                     Glow is the<br />
-                    <span className="text-[#F2C1C3]">Foundation.</span>
+                    <span className="transition-colors duration-500" style={{ color: accent }}>Foundation.</span>
                 </h1>
                 <p className="text-xl text-gray-400 max-w-lg mx-auto font-light leading-relaxed">
-                    Clinical results. Fashion form. Discover the flexible mask designed for your ritual.
+                    Clinical results. Luxury form. Discover the flexible mask designed for your ritual.
                 </p>
                 <div className="flex flex-col sm:flex-row gap-6 pt-12 justify-center">
-                    <button className="bg-[#2D2424] text-white px-16 py-6 rounded-full text-[10px] font-bold uppercase tracking-widest shadow-2xl hover:bg-[#F2C1C3] transition-all">
+                    <button className="bg-[#2D2424] text-white px-16 py-6 rounded-full text-[10px] font-bold uppercase tracking-widest shadow-2xl transition-all hover:-translate-y-1" onMouseEnter={(e) => e.target.style.backgroundColor = accent} onMouseLeave={(e) => e.target.style.backgroundColor = '#2D2424'}>
                         Discover The Mask
                     </button>
-                    <button className="flex items-center gap-4 text-[10px] font-bold uppercase tracking-widest border-b border-gray-200 pb-2">
+                    <button className="flex items-center gap-4 text-[10px] font-bold uppercase tracking-widest border-b pb-2 transition-colors duration-500" style={{ borderColor: accent, color: accent }}>
                         The Science <ArrowRight size={14} />
                     </button>
                 </div>
